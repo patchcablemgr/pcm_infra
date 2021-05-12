@@ -1,0 +1,11 @@
+# Database
+database/storage/*
+!database/storage/.keep
+
+# NGINX
+nginx/cert/*
+!nginx/cert/.keep
+
+# Laravel
+laravel/*
+!laravel/.keep
