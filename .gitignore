@@ -5,6 +5,8 @@ database/storage/*
 # NGINX
 nginx/cert/*
 !nginx/cert/.keep
+nginx/key/*
+!nginx/key/.keep
 
 # Laravel
 laravel/*
