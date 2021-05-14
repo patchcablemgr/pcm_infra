@@ -1,6 +1,6 @@
 # Database
-database/storage/*
-!database/storage/.keep
+mysql/storage/*
+!mysql/storage/.keep
 
 # NGINX
 nginx/cert/*
@@ -10,4 +10,5 @@ nginx/key/*
 
 # Laravel
 laravel/*
+laravel/.*
 !laravel/.keep
