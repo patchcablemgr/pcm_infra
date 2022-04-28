@@ -12,3 +12,8 @@ nginx/key/*
 laravel/*
 laravel/.*
 !laravel/.keep
+
+# Shared
+shared/*
+shared/.*
+!shared/.keep

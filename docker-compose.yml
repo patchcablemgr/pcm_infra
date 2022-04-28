@@ -3,6 +3,7 @@ services:
   laravel:
     env_file:
       - ./laravel/.env
+      - ./shared/network_config
     build:
       context: ./laravel/vendor/laravel/sail/runtimes/8.0
       dockerfile: Dockerfile
@@ -15,6 +16,7 @@ services:
       LARAVEL_SAIL: 0
     volumes:
       - './laravel:/var/www/html'
+      - './shared:/shared'
     networks:
       - app_network
       

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+date > /home/garrett/app_update_test
+
+sudo php /home/garrett/pcm_infra/laravel/vendor/bin/envoy run deploy
