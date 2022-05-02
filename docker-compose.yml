@@ -5,11 +5,11 @@ services:
       - ./laravel/.env
       - ./shared/network_config
     build:
-      context: ./laravel/vendor/laravel/sail/runtimes/8.0
+      context: ./laravel/vendor/laravel/sail/runtimes/8.1
       dockerfile: Dockerfile
       args:
         WWWGROUP: '${WWWGROUP}'
-    image: sail-8.0/app
+    image: sail-8.1/app
     container_name: laravel
     environment:
       WWWUSER: '${WWWUSER}'
