@@ -1,0 +1,69 @@
+version: "3.7"
+services:
+  laravel:
+    env_file:
+      - ./laravel/.env
+      - ./shared/network_config
+    build:
+      context: ./laravel/vendor/laravel/sail/runtimes/8.1
+      dockerfile: Dockerfile
+      args:
+        WWWGROUP: '${WWWGROUP}'
+    image: sail-8.1/app
+    container_name: laravel
+    environment:
+      WWWUSER: '${WWWUSER}'
+      LARAVEL_SAIL: 0
+    volumes:
+      - './laravel:/var/www/html'
+      - './shared:/shared'
+    networks:
+      - app_network
+      
+  mysql:
+    env_file:
+      - ./laravel/.env
+    image: 'mysql:8.0'
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_DATABASE: '${DB_DATABASE}'
+      MYSQL_USER: '${DB_USERNAME}'
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    volumes:
+      - './mysql/storage:/var/lib/mysql'
+    networks:
+      - app_network
+    ports:
+      - "3306:3306"
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    networks:
+      - app_network
+    restart: always
+    ports:
+      - 8080:8080
+    restart: on-failure
+
+  nginx:
+    build:
+      context: ./nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - app_network
+    volumes:
+      - ./nginx/config:/etc/nginx
+      - ./nginx/cert:/etc/ssl/certs
+      - ./nginx/key:/etc/ssl/private
+    environment:
+      - SUBJECT_ALTERNATE_NAME=pcm.lcl
+      - SUBJECT_ALTERNATE_IP=10.0.0.100
+    restart: on-failure
+networks:
+  app_network:

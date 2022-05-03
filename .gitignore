@@ -1,0 +1,21 @@
+# Database
+mysql/storage/*
+!mysql/storage/.keep
+
+# NGINX
+nginx/cert/*
+!nginx/cert/.keep
+nginx/key/*
+!nginx/key/.keep
+
+# Laravel
+laravel/*
+laravel/.*
+!laravel/.keep
+
+# Shared
+shared
+shared/certs/*
+!shared/certs/.keep
+shared/keys/*
+!shared/keys/.keep
