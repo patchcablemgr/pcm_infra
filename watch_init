@@ -1,5 +1,0 @@
-#!/bin/bash
-
-echo /home/garrett/pcm_infra/shared/network_config | entr -n /home/garrett/pcm_infra/watch_network_config
-
-echo /home/garrett/pcm_infra/shared/ssl_config | entr -n /home/garrett/pcm_infra/watch_ssl_config
