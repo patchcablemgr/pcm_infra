@@ -14,7 +14,7 @@ services:
     environment:
       WWWUSER: '${WWWUSER}'
       LARAVEL_SAIL: 0
-      UPDATE_TEST: 1
+      UPDATE_TEST: 2
     volumes:
       - './laravel:/var/www/html'
       - './shared:/shared'
